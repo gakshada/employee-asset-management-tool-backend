@@ -8,6 +8,7 @@ import com.capgemini.employeeassets.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -28,6 +29,11 @@ public class AdminService implements IAdminService{
         else
         throw new ExistingUsernameException( "Username exist already") ;
 
+    }
+    @Override
+    public List<Admin> getAllAdmin()
+    {
+        return adminRepository.findAll();
     }
     @Override
     public Admin getAdminById(long id)

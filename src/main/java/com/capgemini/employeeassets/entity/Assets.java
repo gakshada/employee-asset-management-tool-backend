@@ -2,20 +2,23 @@ package com.capgemini.employeeassets.entity;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Positive;
+
 
 @Entity
 public class Assets {
     @Id
-    //@GeneratedValue
+    @GeneratedValue
     @Column(unique = true)
     private long itemNum;
+    @NotEmpty(message = "itemName should not be Empty")
     private String itemName;
+
     @Column(unique = true)
     private long serialNumber;
 
+    @NotEmpty(message = "status should not be Empty")
     private String status;
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne(cascade = CascadeType.MERGE)
     //@JoinColumn(name = "employee_user_id", referencedColumnName = "user_id")
     private Employee employee;
 

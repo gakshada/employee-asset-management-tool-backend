@@ -40,6 +40,16 @@ public class AssetService implements IAssetService{
            return null;
     }
     @Override
+    public List<Assets> getAllAssets()
+    {
+        return assetRepository.findAll();
+    }
+    @Override
+    public Assets getAssetsById(long itemNum)
+    {
+        return assetRepository.findById(itemNum).get();
+    }
+    @Override
     public List<Assets> getAllAssetsByUserId(long userId)
     {
         if(!assetRepository.findAllByEmployeeUserId(userId).isEmpty())

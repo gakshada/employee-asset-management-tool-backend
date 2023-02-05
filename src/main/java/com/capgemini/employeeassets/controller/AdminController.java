@@ -31,6 +31,13 @@ public class AdminController {
         return adminService.addAdmin(admin);
     }
 
+    @CrossOrigin
+    @GetMapping("/admin-retrieve")
+    public List<Admin> retrieveAllAdmin()
+    {
+        return adminService.getAllAdmin();
+    }
+
     // Employee services controlled by admin
     @CrossOrigin
     @PostMapping("/employee-save")
@@ -72,14 +79,27 @@ public class AdminController {
     }
 
     @CrossOrigin
+    @GetMapping("asset-retrieve")
+    public List<Assets> retrieveAllAssets()
+    {
+        return assetService.getAllAssets();
+    }
+    @CrossOrigin
+    @GetMapping("asset-retrieve-itemnumber/{itemNum}")
+    public Assets retrieveAssetsById(@PathVariable("itemNum") long itemNum)
+    {
+        return assetService.getAssetsById(itemNum);
+    }
+    @CrossOrigin
     @GetMapping("asset-retrieve/{id}")
-    public List<Assets> retrieveAssetsById(@PathVariable("id") long id)
+    public List<Assets> retrieveAssetsByUserId(@PathVariable("id") long id)
     {
         return assetService.getAllAssetsByUserId(id);
     }
 
+    @CrossOrigin
     @PutMapping("asset-update-status/{serialNumber}")
-    public Assets updateAssetsStatus(@PathVariable("serialNumber") long serialNumber, @PathVariable String status)
+    public Assets updateAssetsStatus(@PathVariable("serialNumber") long serialNumber, @RequestParam String status)
     {
         return assetService.updateAssetStatus(serialNumber,status);
     }

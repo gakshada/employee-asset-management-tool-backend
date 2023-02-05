@@ -18,6 +18,7 @@ public class EmployeeController {
         return employeeService.getEmployeeById(id);
     }
 
+    @CrossOrigin
     @PutMapping("/employee-update-address-and-phonenumber/{id}")
     public Employee updateEmplyeeAddressAndPnoneNumber(@PathVariable("id") long id , @RequestParam String address, @RequestParam String phoneNumber)
     {
